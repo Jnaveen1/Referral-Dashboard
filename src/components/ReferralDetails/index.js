@@ -13,7 +13,7 @@ const ReferralDetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const getReferralDetails = async () => {
+  useEffect(() => {
     try {
       const token = Cookies.get("jwt_token");
 
@@ -63,10 +63,6 @@ const ReferralDetails = () => {
     }
 
     setLoading(false);
-  };
-
-  useEffect(() => {
-    getReferralDetails();
   }, [id]);
 
   const formatDate = date =>

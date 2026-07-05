@@ -17,29 +17,26 @@ const Dashboard = () => {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("desc");
 
+useEffect(() => {
   const getDashboardData = async () => {
     try {
       const token = Cookies.get("jwt_token");
-      console.log(token);
 
-      const url = `https://v9fes04dwf.execute-api.eu-north-1.amazonaws.com/api/referrals?search=${search}&sort=${sort}`;
-
-      const response = await fetch(url, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        `https://v9fes04dwf.execute-api.eu-north-1.amazonaws.com/api/referrals?search=${search}&sort=${sort}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       const data = await response.json();
-      console.log("Status:", response.status);
-    console.log("Response:", data);
 
       if (response.ok) {
-        // API returns everything inside data
         setDashboardData(data.data);
       } else {
-        setError(data.message || "Something went wrong");
+        setError(data.message);
       }
     } catch (err) {
       setError(err.message);
@@ -48,9 +45,8 @@ const Dashboard = () => {
     setLoading(false);
   };
 
-  useEffect(() => {
-    getDashboardData();
-  }, [search, sort]);
+  getDashboardData();
+}, [search, sort]);
 
   if (loading) {
     return <h2>Loading...</h2>;
