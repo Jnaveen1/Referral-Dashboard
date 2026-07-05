@@ -1,0 +1,54 @@
+.share-section {
+    margin-top:40px;
+}
+
+.share-card{
+    margin-top:20px;
+    padding:25px;
+    border:1px solid #d7dfe9;
+    border-radius:10px;
+    background:white;
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+}
+
+.share-item{
+    margin-bottom:25px;
+}
+
+.share-item:last-child{
+    margin-bottom:0;
+}
+
+.share-item label{
+    display:block;
+    margin-bottom:10px;
+    font-weight:600;
+}
+
+.copy-container{
+    display:flex;
+    flex-direction:row;
+    gap:10px;
+    margin-right:50px;
+}
+
+.copy-container input{
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:6px;
+    background:#f8fafc;
+    width:25vw;
+}
+
+.copy-container button{
+    padding:12px 20px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    margin-right:20px;
+    width:100px;
+}

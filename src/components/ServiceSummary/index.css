@@ -1,0 +1,28 @@
+.service-summary-section{
+    margin-top:40px;
+}
+
+.summary-card{
+    margin-top:20px;
+    background:#fff;
+    border:1px solid #d7dfe9;
+    border-radius:10px;
+    padding:25px;
+}
+
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 0;
+    border-bottom:1px solid #ececec;
+}
+
+.summary-row:last-child{
+    border-bottom:none;
+}
+
+.label{
+    font-weight:600;
+    color:#475569;
+}

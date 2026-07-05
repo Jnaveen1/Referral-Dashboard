@@ -1,0 +1,88 @@
+.table-section{
+    margin-top:40px;
+}
+
+.referral-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+.referral-table th{
+    background:#f8fafc;
+    text-align:left;
+    padding:14px;
+}
+
+.referral-table td{
+    padding:14px;
+    border-bottom:1px solid #e2e8f0;
+}
+
+.referral-table tr{
+    cursor:pointer;
+}
+
+.referral-table tbody tr:hover{
+    background:#f8fafc;
+}
+
+.table-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.table-header input{
+    width:280px;
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:6px;
+}
+
+.table-actions{
+    display:flex;
+    gap:20px;
+    align-items:center;
+}
+
+.sort-container{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.sort-container select{
+    padding:10px;
+    border:1px solid #cbd5e1;
+    border-radius:6px;
+}
+.pagination{
+    margin-top:10px;
+    display:flex;
+    justify-content:center;
+    gap:8px;
+}
+
+.pagination button {
+    background: white;
+    color: black;
+    border: 1px solid #ccc;
+}
+
+.active-page {
+    background: #2563eb;
+    color: white;
+}
+
+.entries-text{
+    margin-top:15px;
+    text-align:center;
+}
+
+.pagination-container{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+}
