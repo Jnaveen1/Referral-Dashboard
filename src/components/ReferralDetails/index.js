@@ -13,56 +13,61 @@ const ReferralDetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+
+
   useEffect(() => {
-    try {
-      const token = Cookies.get("jwt_token");
+      const getReferralDetails = async () => {
+        try {
+          const token = Cookies.get("jwt_token");
 
-      const response = await fetch(
-        `https://v9fes04dwf.execute-api.eu-north-1.amazonaws.com/api/referrals?id=${id}`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      const data = await response.json();
-
-      console.log(data);
-
-      if (response.ok) {
-        let referralData = null;
-
-        // API may return a single object
-        if (data.data && !Array.isArray(data.data)) {
-          referralData = data.data;
-        }
-
-        // API may return referrals array
-        if (
-          data.data &&
-          data.data.referrals &&
-          data.data.referrals.length > 0
-        ) {
-          referralData = data.data.referrals.find(
-            each => String(each.id) === id
+          const response = await fetch(
+            `https://v9fes04dwf.execute-api.eu-north-1.amazonaws.com/api/referrals?id=${id}`,
+            {
+              method: "GET",
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
           );
+
+          const data = await response.json();
+
+          console.log(data);
+
+          if (response.ok) {
+            let referralData = null;
+
+            // API may return a single object
+            if (data.data && !Array.isArray(data.data)) {
+              referralData = data.data;
+            }
+
+            // API may return referrals array
+            if (
+              data.data &&
+              data.data.referrals &&
+              data.data.referrals.length > 0
+            ) {
+              referralData = data.data.referrals.find(
+                each => String(each.id) === id
+              );
+            }
+
+            if (referralData) {
+              setReferral(referralData);
+            } else {
+              setError("Referral not found");
+            }
+          } else {
+            setError(data.message || "Referral not found");
+          }
+        } catch (err) {
+          setError(err.message);
         }
 
-        if (referralData) {
-          setReferral(referralData);
-        } else {
-          setError("Referral not found");
-        }
-      } else {
-        setError(data.message || "Referral not found");
-      }
-    } catch (err) {
-      setError(err.message);
-    }
-
-    setLoading(false);
+        setLoading(false);
+      };
+  getReferralDetails();
   }, [id]);
 
   const formatDate = date =>
